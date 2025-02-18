@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student form</title>
+    <link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<body>
+    <h1>Student Form</h1>
+    <form th:action="@{/process-student-form}" method="post" th:object="${student}">
+        <p>
+            First Name <input type="text" th:field="*{firstName}">
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="a"></span>
+        </p>
+        <p>Last Name <input type="text" th:field="*{lastName}"></p>
+        <p>Country
+            <select th:field="*{country}">
+                <option th:value="Viet-Nam">Viet Nam</option>
+                <option th:value="Hoa-Ky">Hoa Ky</option>
+                <option th:value="Trung-Quoc">Trung Quoc</option>
+                <option th:value="Nhat-Ban">Nhat Ban</option>
+                <option th:value="Phap">Phaps</option>
+            </select>
+        </p>
+        <p>Gender
+            <input type="radio" th:field="${student.gender}" th:value="Nam">Nam
+            <input type="radio" th:field="${student.gender}" th:value="Nu">Nu
+        </p>
+        <p>Programming Language
+            <input type="checkbox" th:field="*{language}" th:value="Java">Java
+            <input type="checkbox" th:field="*{language}" th:value="Python">Python
+            <input type="checkbox" th:field="*{language}" th:value="JavaScript">JavaScript
+            <input type="checkbox" th:field="*{language}" th:value="Dart">Dart
+        </p>
+        <p><input type="submit" value="submit"></p>
+    </form>
+
+</body>
+</html>
